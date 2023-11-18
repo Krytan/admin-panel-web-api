@@ -2,6 +2,7 @@
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using skolesystem.Data;
+using skolesystem.DTOs;
 using skolesystem.Models;
 
 // Repository for data access
@@ -11,7 +12,7 @@ public interface IBrugerRepository
     Task<IEnumerable<Bruger>> GetAll();
     Task<IEnumerable<Bruger>> GetDeletedBrugers();
     Task AddBruger(Bruger bruger);
-    Task UpdateBruger(Bruger bruger);
+    Task UpdateBruger(int id, Bruger updatedBruger);
     Task SoftDeleteBruger(int id);
 }
 
@@ -45,10 +46,25 @@ public class BrugerRepository : IBrugerRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task UpdateBruger(Bruger bruger)
+    public async Task UpdateBruger(int id, Bruger updatedBruger)
     {
-        _context.Entry(bruger).State = EntityState.Modified;
-        await _context.SaveChangesAsync();
+        var existingBruger = await _context.Bruger.FindAsync(id);
+
+        if (existingBruger != null)
+        {
+            // Update properties of existingBruger with updatedBruger
+            existingBruger.user_information_id = updatedBruger.user_information_id;
+            existingBruger.name = updatedBruger.name;
+            existingBruger.last_name = updatedBruger.last_name;
+            existingBruger.phone = updatedBruger.phone;
+            existingBruger.date_of_birth = updatedBruger.date_of_birth;
+            existingBruger.address = updatedBruger.address;
+            existingBruger.is_deleted = updatedBruger.is_deleted;
+            existingBruger.gender_id = updatedBruger.gender_id;
+            existingBruger.city_id = updatedBruger.city_id;
+
+            await _context.SaveChangesAsync();
+        }
     }
 
     public async Task SoftDeleteBruger(int id)
@@ -58,10 +74,10 @@ public class BrugerRepository : IBrugerRepository
         if (brugerToDelete != null)
         {
             brugerToDelete.is_deleted = true;
-            _context.Entry(brugerToDelete).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
     }
 }
+
 
 

@@ -39,8 +39,16 @@ public class SkemaService : ISkemaService
 
     public async Task UpdateSkema(int id, SkemaCreateDto skemaDto)
     {
+        var existingSkema = await _skemaRepository.GetById(id);
+
+        if (existingSkema == null)
+        {
+            throw new ArgumentException($"Skema with ID {id} not found.");
+        }
+
         await _skemaRepository.Update(id, skemaDto);
     }
+
 
     public async Task DeleteSkema(int id)
     {

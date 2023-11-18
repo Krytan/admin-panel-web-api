@@ -1,10 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Mvc;
 using skolesystem.DTOs;
-using skolesystem.Models;
-using skolesystem.Service;
+
 
 namespace skolesystem.Controllers
 {
@@ -17,30 +13,27 @@ namespace skolesystem.Controllers
         public BrugerController(IBrugerService brugerService)
         {
             _brugerService = brugerService;
+
         }
 
         [HttpGet]
         public async Task<IEnumerable<BrugerReadDto>> GetBrugers()
         {
             var brugers = await _brugerService.GetAllBrugers();
-            var brugerDtos = new List<BrugerReadDto>();
-            foreach (var bruger in brugers)
+            var brugerDtos = brugers.Select(bruger => new BrugerReadDto
             {
-                brugerDtos.Add(new BrugerReadDto
-                {
-                    user_information_id = bruger.user_information_id,
-                    name = bruger.name,
-                    last_name = bruger.last_name,
-                    phone = bruger.phone,
-                    date_of_birth = bruger.date_of_birth,
-                    address = bruger.address,
-                    is_deleted = bruger.is_deleted,
-                    gender_id = bruger.gender_id,
-                    city_id = bruger.city_id,
-                    user_id = bruger.user_id
-                    
-                });
-            }
+                user_information_id = bruger.user_information_id,
+                name = bruger.name,
+                last_name = bruger.last_name,
+                phone = bruger.phone,
+                date_of_birth = bruger.date_of_birth,
+                address = bruger.address,
+                is_deleted = bruger.is_deleted,
+                gender_id = bruger.gender_id,
+                city_id = bruger.city_id,
+                user_id = bruger.user_id
+            }).ToList();
+
             return brugerDtos;
         }
 
@@ -68,11 +61,12 @@ namespace skolesystem.Controllers
                 gender_id = bruger.gender_id,
                 city_id = bruger.city_id,
                 user_id = bruger.user_id
-                
             };
 
             return Ok(brugerDto);
         }
+
+
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -81,22 +75,11 @@ namespace skolesystem.Controllers
         {
             try
             {
-                var bruger = new Bruger
-                {
-                    name = brugerDto.name,
-                    last_name = brugerDto.last_name,
-                    phone = brugerDto.phone,
-                    date_of_birth = brugerDto.date_of_birth,
-                    address = brugerDto.address,
-                    is_deleted = brugerDto.is_deleted,
-                    gender_id = brugerDto.gender_id,
-                    city_id = brugerDto.city_id,
-                    user_id = brugerDto.user_id
-                };
+                // Your logic to create the Bruger entity and get the created BrugerReadDto
+                var createdBrugerDto = await _brugerService.AddBruger(brugerDto);
 
-                await _brugerService.AddBruger(bruger);
-
-                return CreatedAtAction(nameof(GetBrugerById), new { id = bruger.user_information_id }, brugerDto);
+                // Return the created BrugerReadDto
+                return CreatedAtAction(nameof(GetBrugerById), new { id = createdBrugerDto.user_information_id }, createdBrugerDto);
             }
             catch (ArgumentException ex)
             {
@@ -105,24 +88,25 @@ namespace skolesystem.Controllers
             }
         }
 
-
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateBruger(int id, BrugerUpdateDto brugerDto)
         {
-            var existingBruger = await _brugerService.GetBrugerById(id);
+            try
+            {
+                var existingBruger = await _brugerService.GetBrugerById(id);
 
-            if (existingBruger == null)
+                if (existingBruger == null)
+                {
+                    throw new NotFoundException("Bruger not found");
+                }
+
+                await _brugerService.UpdateBruger(id, brugerDto);
+                return NoContent();
+            }
+            catch (NotFoundException)
             {
                 return NotFound();
             }
-
-            existingBruger.name = brugerDto.name;
-            existingBruger.last_name = brugerDto.last_name;
-            // Map other fields as needed
-
-            await _brugerService.UpdateBruger(existingBruger);
-
-            return NoContent();
         }
 
         [HttpDelete("{id}")]
@@ -130,20 +114,15 @@ namespace skolesystem.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> DeleteBruger(int id)
         {
-            var brugerToDelete = await _brugerService.GetBrugerById(id);
-
-            if (brugerToDelete == null)
+            try
+            {
+                await _brugerService.SoftDeleteBruger(id);
+                return NoContent();
+            }
+            catch (NotFoundException)
             {
                 return NotFound();
             }
-
-            await _brugerService.SoftDeleteBruger(id);
-
-            return NoContent();
         }
-
-
-
-
     }
 }

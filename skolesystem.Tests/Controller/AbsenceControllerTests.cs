@@ -133,7 +133,7 @@ namespace skolesystem.Tests.Controller
             var resultDto = (AbsenceReadDto)result;
             resultDto.absence_id.Should().Be(expectedAbsenceId);
             resultDto.user_id.Should().Be(absenceCreateDto.user_id);
-            // Include other assertions as needed based on your mapping logic
+            
         }
 
 
