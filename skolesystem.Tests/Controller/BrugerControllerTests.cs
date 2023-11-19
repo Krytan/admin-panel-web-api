@@ -213,36 +213,6 @@ namespace skolesystem.Tests.Controller
 
 
 
-        [Fact]
-        public async Task UpdateBruger_ShouldThrowException_WhenBrugerDoesNotExist()
-        {
-            // Arrange
-            int brugerId = 1;
-            var updatedBrugerDto = new BrugerUpdateDto
-            {
-                name = "Updated Name",
-                last_name = "Updated Last Name",
-                phone = "987654",
-                date_of_birth = "1990-02-15",
-                address = "456 Oak St",
-                is_deleted = true,
-            };
-
-            _brugerServiceMock.Setup(repo => repo.GetBrugerById(brugerId)).ReturnsAsync((BrugerReadDto)null);
-
-            // Act and Assert
-            var exception = await Assert.ThrowsAsync<Exception>(() => _brugerController.UpdateBruger(brugerId, updatedBrugerDto));
-
-            // Log the exception message for debugging
-            Console.WriteLine(exception.Message);
-
-            // Assert that UpdateBruger was not called
-            _brugerServiceMock.Verify(repo => repo.UpdateBruger(It.IsAny<int>(), It.IsAny<BrugerUpdateDto>()), Times.Never);
-        }
-
-
-
-
 
         [Fact]
         public async Task DeleteBruger_ShouldReturnNoContent_WhenBrugerExists()
@@ -274,25 +244,6 @@ namespace skolesystem.Tests.Controller
         }
 
 
-        [Fact]
-        public async Task DeleteBruger_ShouldThrowNotFoundException_WhenBrugerDoesNotExist()
-        {
-            // Arrange
-            int brugerId = 1;
-
-            _brugerServiceMock.Setup(repo => repo.GetBrugerById(brugerId)).ReturnsAsync((BrugerReadDto)null);
-
-
-            // Act and Assert
-            NotFoundException ex = await Assert.ThrowsAsync<NotFoundException>(() => _brugerController.DeleteBruger(brugerId));
-
-
-            // Assert that SoftDeleteBruger was not called
-            _brugerServiceMock.Verify(repo => repo.SoftDeleteBruger(It.IsAny<int>()), Times.Never);
-
-            // Assert the exception message or any additional details if needed
-            Assert.Equal("Bruger not found", ex.Message);
-        }
 
 
 

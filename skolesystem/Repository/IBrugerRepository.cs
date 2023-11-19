@@ -50,8 +50,11 @@ public class BrugerRepository : IBrugerRepository
     {
         var existingBruger = await _context.Bruger.FindAsync(id);
 
-        if (existingBruger != null)
+
+        if (existingBruger == null)
         {
+            throw new ArgumentException("Absence not found");
+        }
             // Update properties of existingBruger with updatedBruger
             existingBruger.user_information_id = updatedBruger.user_information_id;
             existingBruger.name = updatedBruger.name;
@@ -64,7 +67,6 @@ public class BrugerRepository : IBrugerRepository
             existingBruger.city_id = updatedBruger.city_id;
 
             await _context.SaveChangesAsync();
-        }
     }
 
     public async Task SoftDeleteBruger(int id)

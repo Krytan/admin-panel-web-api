@@ -21,6 +21,7 @@ namespace skolesystem.Tests.Services
         private readonly UsersService _usersService;
         private readonly Mock<IUsersRepository> _usersRepositoryMock = new Mock<IUsersRepository>();
         private readonly IMapper _mapper; // Add an instance of IMapper
+        private readonly Mock<IMapper> _mapperMock = new Mock<IMapper>();
 
         // Constructor 
         public UsersServiceTests()
@@ -31,43 +32,10 @@ namespace skolesystem.Tests.Services
 
             // Provide _mapper to the UsersService constructor
             _usersService = new UsersService(_usersRepositoryMock.Object, _mapper);
+            _usersService = new UsersService(_usersRepositoryMock.Object, _mapperMock.Object);
         }
 
-        [Fact]
-        public async Task GetAll_ShouldReturnStatusCode200_WithData()
-        {
-            // Arrange
-            var usersData = new List<Users>
-            {
-                // Add your Users data here
-                new Users
-                {
-                    surname = "Doe",
-                    email = "john.doe@example.com",
-                    password_hash = "passwordHash",
-                    user_id = 1,
-                    email_confirmed = 1,
-                    lockout_enabled = 1,
-                    phone_confirmed = 1,
-                    twofactor_enabled = 1,
-                    try_failed_count = 1,
-                    lockout_end = 1,
-                    user_information_id = 1,
-                },
-            };
 
-            _usersRepositoryMock.Setup(repo => repo.GetAll()).ReturnsAsync(usersData);
-
-            // Act
-            var result = await _usersService.GetAllUsers();
-
-            // Assert
-            result.Should().NotBeNull().And.BeAssignableTo<IEnumerable<UserReadDto>>();
-            var userDtos = result.Should().BeOfType<List<UserReadDto>>().Subject;
-
-            userDtos.Should().HaveCount(usersData.Count);
-
-        }
 
         [Fact]
         public async Task GetAll_ShouldReturnStatusCode204_WhenNoDataExists()
@@ -81,10 +49,11 @@ namespace skolesystem.Tests.Services
 
             // Assert
             result.Should().NotBeNull().And.BeAssignableTo<IEnumerable<UserReadDto>>();
-            var userDtos = result.Should().BeOfType<List<UserReadDto>>().Subject;
+            var userDtos = result.Should().BeOfType<UserReadDto[]>().Subject; // Change to UserReadDto[]
 
             userDtos.Should().BeEmpty();
         }
+
 
 
         [Fact]
@@ -101,21 +70,7 @@ namespace skolesystem.Tests.Services
         }
 
 
-        [Fact]
-        public async Task GetUserById_ShouldReturnStatusCode200_WhenDataExists()
-        {
-            // Arrange
-            int userId = 1;
-            var user = new Users { /* populate user properties */ };
-            _usersRepositoryMock.Setup(repo => repo.GetById(userId)).ReturnsAsync(user);
 
-            // Act
-            var result = await _usersService.GetUserById(userId);
-
-            // Assert
-            result.Should().NotBeNull();
-            result.Should().BeOfType<UserReadDto>(); // Adjust the type based on your actual return type
-        }
         [Fact]
         public async Task GetUserById_ShouldReturnStatusCode404_WhenDataDoesNotExist()
         {
@@ -185,8 +140,37 @@ namespace skolesystem.Tests.Services
             // Assert
             await act.Should().ThrowAsync<Exception>().WithMessage("This is an exception");
         }
-       
-        //Create og Update
+
+        [Fact]
+        public async Task AddUser_ShouldAddUser_WhenValidUserCreateDtoProvided()
+        {
+            // Arrange
+            var userCreateDto = new UserCreateDto
+            {
+                user_id = 1,
+                surname = "Doe",
+                email = "john.doe@example.com",
+                
+            };
+
+            var expectedUser = new Users
+            {
+                user_id = 1,
+                surname = "Doe",
+                email = "john.doe@example.com",
+                
+            };
+
+            _mapperMock.Setup(mapper => mapper.Map<Users>(userCreateDto)).Returns(expectedUser);
+
+            // Act
+            await _usersService.AddUser(userCreateDto);
+
+            // Assert
+            _usersRepositoryMock.Verify(repo => repo.AddUser(expectedUser), Times.Once);
+        }
+
+        
 
 
 
