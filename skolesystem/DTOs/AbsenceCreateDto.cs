@@ -14,7 +14,7 @@ namespace skolesystem.DTOs
         public int class_id { get; set; }
 
         [Required]
-        public DateTime absence_date { get; set; }
+        public string absence_date { get; set; }
 
         public string reason { get; set; }
     }

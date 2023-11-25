@@ -8,6 +8,7 @@ namespace skolesystem.DTOs.UserSubmission.Response
         public string email { get; set; }
         public int user_information_id { get; set; }
         public bool is_deleted { get; set; }
+        public int role_id { get; set; }
     }
 }
 

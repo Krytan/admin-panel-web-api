@@ -169,3 +169,5 @@
 /Users/paullinecarls/Developer/skolesystem-web/admin-panel-web-api/skolesystem.test/obj/Debug/net7.0/skolesystem.test.pdb
 /Users/paullinecarls/Developer/skolesystem-web/admin-panel-web-api/skolesystem.test/obj/Debug/net7.0/skolesystem.test.genruntimeconfig.cache
 /Users/paullinecarls/Developer/skolesystem-web/admin-panel-web-api/skolesystem.test/obj/Debug/net7.0/ref/skolesystem.test.dll
+/Users/paullinecarls/Developer/skolesystem-web/admin-panel-web-api/skolesystem.test/bin/Debug/net7.0/DevOne.Security.Cryptography.BCrypt.dll
+/Users/paullinecarls/Developer/skolesystem-web/admin-panel-web-api/skolesystem.test/bin/Debug/net7.0/BCrypt.Net-Next.dll

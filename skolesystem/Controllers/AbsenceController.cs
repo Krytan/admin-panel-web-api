@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using skolesystem.DTOs;
 using skolesystem.Models;
 using skolesystem.Service;
+using skolesystem.Authorization;
 
 namespace skolesystem.Controllers
 {
@@ -19,7 +20,7 @@ namespace skolesystem.Controllers
         {
             _absenceService = absenceService;
         }
-
+        [Authorize(1,2)]
         [HttpGet]
         public async Task<IEnumerable<AbsenceReadDto>> GetAbsences()
         {
@@ -41,6 +42,7 @@ namespace skolesystem.Controllers
             return absenceDtos;
         }
 
+        [Authorize(1,2)]
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(AbsenceReadDto), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -67,6 +69,7 @@ namespace skolesystem.Controllers
             return Ok(absenceDto);
         }
 
+        [Authorize(2)]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<IActionResult> CreateAbsence(AbsenceCreateDto absenceDto)
@@ -78,7 +81,7 @@ namespace skolesystem.Controllers
             return CreatedAtAction(nameof(GetAbsenceById), new { id = createdAbsenceDto.absence_id }, createdAbsenceDto);
         }
 
-
+        [Authorize(1,2)]
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateAbsence(int id, AbsenceUpdateDto absenceDto)
         {
@@ -97,7 +100,7 @@ namespace skolesystem.Controllers
 
 
 
-
+        [Authorize(1,2)]
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

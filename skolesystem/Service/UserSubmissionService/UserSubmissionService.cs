@@ -42,7 +42,8 @@ namespace skolesystem.Service.UserSubmissionService
                 {
                     user_id = a.User.user_id,
                     surname = a.User.surname,
-                    email = a.User.email
+                    email = a.User.email,
+                    role_id = a.User.role_id
                 }
             }).ToList();
         }
@@ -84,7 +85,8 @@ namespace skolesystem.Service.UserSubmissionService
                 {
                     user_id = a.User.user_id,
                     surname = a.User.surname,
-                    email = a.User.email
+                    email = a.User.email,
+                    role_id = a.User.role_id
                 },
                 userSubmissionAssignmentResponse = new UserSubmissionAssignmentResponse
                 {

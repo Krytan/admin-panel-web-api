@@ -1,108 +1,99 @@
 ﻿<Properties GitUserInfo="UsingMD" StartupConfiguration="{27AB0FB5-BE0D-4648-B021-88533AE0CF9F}|https">
-  <MonoDevelop.Ide.ItemProperties.skolesystem PreferredExecutionTarget="/Applications/Firefox.app" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="skolesystem/Service/IUsersService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="skolesystem/Program.cs">
     <Files>
-      <File FileName="skolesystem/Program.cs" />
+      <File FileName="skolesystem/Program.cs" Line="152" Column="1" />
       <File FileName="skolesystem.test/skolesystem.test.csproj" />
       <File FileName="skolesystem.test/Controller/ClasseControllerTest.cs" />
       <File FileName="skolesystem.test/Controller/SkemaControllerTests.cs" />
       <File FileName="skolesystem.test/Controller/SubjectControllerTest.cs" />
-      <File FileName="skolesystem.test/Controller/UsersControllerTests.cs" Line="30" Column="106" />
+      <File FileName="skolesystem.test/Controller/UsersControllerTests.cs" />
       <File FileName="skolesystem.test/Controller/UserSubmissionControllerTest.cs" />
-      <File FileName="skolesystem/Controllers/UsersController.cs" Line="23" Column="46" />
-      <File FileName="skolesystem/Service/IUsersService.cs" Line="24" Column="42" />
+      <File FileName="skolesystem/Controllers/UsersController.cs" />
+      <File FileName="skolesystem/Service/IUsersService.cs" />
       <File FileName="skolesystem.test/Controller/AbsenceControllerTests.cs" />
       <File FileName="skolesystem.test/Controller/AssignmentControllerTest.cs" />
-      <File FileName="skolesystem.test/Services/AbsenceServiceTests.cs" Line="1" Column="1" />
-      <File FileName="skolesystem.test/Services/BrugerServiceTests.cs" Line="255" Column="1" />
+      <File FileName="skolesystem.test/Services/AbsenceServiceTests.cs" />
       <File FileName="skolesystem.test/Services/SkemaServiceTests.cs" />
-      <File FileName="skolesystem.test/Services/UsersServiceTests.cs" Line="22" Column="21" />
-      <File FileName="skolesystem/DTOs/UserCreateDto.cs" Line="4" Column="6" />
-      <File FileName="skolesystem/Repository/IUsersRepository.cs" Line="32" Column="10" />
-      <File FileName="skolesystem/Authorization/JwtMiddleware.cs" Line="24" Column="56" />
-      <File FileName="skolesystem/Controllers/UserSubmissionController.cs" Line="1" Column="1" />
-      <File FileName="skolesystem/DTOs/LoginRequest.cs" Line="10" Column="2" />
-      <File FileName="skolesystem/Models/Users.cs" Line="6" Column="18" />
-      <File FileName="skolesystem/DTOs/LoginResponse.cs" Line="12" Column="1" />
-      <File FileName="skolesystem/Service/IUser_informationService.cs" Line="78" Column="9" />
-      <File FileName="skolesystem.test/Usings.cs" Line="1" Column="1" />
-      <File FileName="skolesystem/Controllers/User_informationController.cs" Line="172" Column="1" />
-      <File FileName="skolesystem.test/Controller/User_informationControllerTests.cs" Line="29" Column="15" />
-      <File FileName="skolesystem/DTOs/User_informationUpdateDTO.cs" Line="1" Column="1" />
-      <File FileName="skolesystem/DTOs/AbsenceCreateDto.cs" Line="5" Column="18" />
-      <File FileName="skolesystem/Controllers/AbsenceController.cs" Line="72" Column="63" />
-      <File FileName="skolesystem/DTOs/Assignment/Request/NewAssignment.cs" Line="13" Column="19" />
-      <File FileName="skolesystem/Authorization/AllowAnonymousAttribute.cs" Line="1" Column="1" />
-      <File FileName="skolesystem/Authorization/AppSettings.cs" Line="1" Column="1" />
-      <File FileName="skolesystem/Authorization/AuthorizeAttribute.cs" Line="1" Column="1" />
-      <File FileName="skolesystem/Authorization/JwtUtils.cs" Line="1" Column="1" />
-      <File FileName="skolesystem/Controllers/AssignmentController.cs" Line="1" Column="1" />
-      <File FileName="skolesystem/Service/AssignmentService/AssignmentService.cs" Line="78" Column="1" />
-      <File FileName="skolesystem/DTOs/Assignment/Response/AssignmentResponse.cs" Line="1" Column="1" />
-      <File FileName="skolesystem/DTOs/Assignment/Response/AssignmentClasseResponse.cs" Line="1" Column="1" />
-      <File FileName="skolesystem/DTOs/Assignment/Response/AssignmentSubjectResponse.cs" Line="1" Column="1" />
-      <File FileName="skolesystem/Service/AssignmentService/IAssignmentService.cs" Line="13" Column="33" />
-      <File FileName="skolesystem/Service/ClasseService/ClasseService.cs" Line="11" Column="32" />
-      <File FileName="skolesystem/Repository/ClasseRepository/ClasseRepository.cs" Line="18" Column="9" />
-      <File FileName="skolesystem/Models/Classe.cs" Line="1" Column="1" />
-      <File FileName="skolesystem/Controllers/SubjectController.cs" Line="122" Column="1" />
-      <File FileName="skolesystem/Controllers/HomeController.cs" Line="121" Column="1" />
-      <File FileName="skolesystem/Repository/ClassRepository/HomeController.cs" Line="48" Column="10" />
-      <File FileName="skolesystem/Repository/ClassRepository/HomeController.cs" Line="15" Column="1" />
-      <File FileName="skolesystem/Service/EnrollmentService/EnrollmentService.cs" Line="102" Column="15" />
-      <File FileName="skolesystem/DTOs/UserUpdateDto.cs" Line="1" Column="1" />
+      <File FileName="skolesystem.test/Services/UsersServiceTests.cs" />
+      <File FileName="skolesystem/DTOs/UserCreateDto.cs" />
+      <File FileName="skolesystem/Repository/IUsersRepository.cs" />
+      <File FileName="skolesystem/Authorization/JwtMiddleware.cs" />
+      <File FileName="skolesystem/Controllers/UserSubmissionController.cs" />
+      <File FileName="skolesystem/DTOs/LoginRequest.cs" />
+      <File FileName="skolesystem/Models/Users.cs" />
+      <File FileName="skolesystem/DTOs/LoginResponse.cs" />
+      <File FileName="skolesystem/Service/IUser_informationService.cs" />
+      <File FileName="skolesystem.test/Usings.cs" />
+      <File FileName="skolesystem/Controllers/User_informationController.cs" />
+      <File FileName="skolesystem.test/Controller/User_informationControllerTests.cs" />
+      <File FileName="skolesystem/DTOs/User_informationUpdateDTO.cs" />
+      <File FileName="skolesystem/DTOs/AbsenceCreateDto.cs" />
+      <File FileName="skolesystem/Controllers/AbsenceController.cs" />
+      <File FileName="skolesystem/DTOs/Assignment/Request/NewAssignment.cs" />
+      <File FileName="skolesystem/Authorization/AllowAnonymousAttribute.cs" />
+      <File FileName="skolesystem/Authorization/AppSettings.cs" />
+      <File FileName="skolesystem/Authorization/AuthorizeAttribute.cs" />
+      <File FileName="skolesystem/Authorization/JwtUtils.cs" />
+      <File FileName="skolesystem/Controllers/AssignmentController.cs" />
+      <File FileName="skolesystem/Service/AssignmentService/AssignmentService.cs" />
+      <File FileName="skolesystem/DTOs/Assignment/Response/AssignmentResponse.cs" />
+      <File FileName="skolesystem/DTOs/Assignment/Response/AssignmentClasseResponse.cs" />
+      <File FileName="skolesystem/DTOs/Assignment/Response/AssignmentSubjectResponse.cs" />
+      <File FileName="skolesystem/Service/AssignmentService/IAssignmentService.cs" />
+      <File FileName="skolesystem/Service/ClasseService/ClasseService.cs" />
+      <File FileName="skolesystem/Models/Classe.cs" />
+      <File FileName="skolesystem/Controllers/SubjectController.cs" />
+      <File FileName="skolesystem/Service/EnrollmentService/EnrollmentService.cs" />
+      <File FileName="skolesystem/DTOs/UserUpdateDto.cs" />
+      <File FileName="skolesystem/DTOs/User_informationCreateDTO.cs" />
+      <File FileName="../../../../../usr/local/share/dotnet/sdk/7.0.311/Microsoft.Common.CurrentVersion.targets" />
+      <File FileName="skolesystem/DTOs/UserSubmission/Request/NewUserSubmission.cs" />
+      <File FileName="skolesystem/DTOs/UserSubmission/Request/UpdateUserSubmission.cs" />
+      <File FileName="skolesystem/Service/UserSubmissionService/IUserSubmissionService.cs" />
+      <File FileName="skolesystem/Service/UserSubmissionService/UserSubmissionService.cs" />
+      <File FileName="skolesystem/Data/ScheduleDbContext.cs" />
+      <File FileName="skolesystem/DTOs/ScheduleUpdateDTO.cs" />
+      <File FileName="skolesystem/Service/IScheduleService.cs" />
+      <File FileName="skolesystem/Controllers/ScheduleController.cs" />
+      <File FileName="skolesystem/Repository/IScheduleRepository.cs" />
+      <File FileName="skolesystem/DTOs/ScheduleReadDto.cs" />
+      <File FileName="skolesystem/DTOs/ScheduleCreateDTO.cs" />
+      <File FileName="skolesystem/Repository/UserSubmissionRepository/UserSubmissionRepository.cs" />
+      <File FileName="skolesystem/Controllers/EnrollmentController.cs" />
+      <File FileName="skolesystem/Repository/UserSubmissionRepository/IUserSubmissionRepository.cs" />
+      <File FileName="skolesystem/DTOs/UserReadDto.cs" />
+      <File FileName="skolesystem/Data/UsersDbContext.cs" />
+      <File FileName="skolesystem/Data/User_informationDbContext.cs" />
+      <File FileName="skolesystem/Models/User_information.cs" />
+      <File FileName="skolesystem/DTOs/UserSubmission/Response/UserSubmissionUserResponse.cs" />
+      <File FileName="skolesystem/DTOs/UserSubmission/Response/UserSubmissionResponse.cs" />
+      <File FileName="skolesystem/DTOs/UserSubmission/Response/UserSubmissionAssignmentResponse.cs" />
+      <File FileName="skolesystem/Models/Absence.cs" />
+      <File FileName="skolesystem/DTOs/AbsenceReadDto.cs" />
+      <File FileName="skolesystem/DTOs/AbsenceUpdateDto.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="skolesystem" expanded="True">
-            <Node name="skolesystem">
-              <Node name="Authorization" expanded="True" />
-              <Node name="Controllers" expanded="True" />
-              <Node name="Data" expanded="True" />
-              <Node name="DTOs" expanded="True">
-                <Node name="Assignment" expanded="True">
-                  <Node name="Request" expanded="True" />
-                  <Node name="Response" expanded="True" />
-                </Node>
-                <Node name="Classe" expanded="True">
-                  <Node name="Request" expanded="True" />
-                  <Node name="Response" expanded="True" />
-                </Node>
-                <Node name="Enrollment" expanded="True" />
-              </Node>
-              <Node name="Models" expanded="True" />
-              <Node name="Repository">
-                <Node name="ClassRepository" expanded="True" />
-                <Node name="SubjectRepository" expanded="True" />
-              </Node>
-              <Node name="Service" expanded="True">
-                <Node name="AssignmentService" expanded="True" />
-                <Node name="ClasseService" expanded="True" />
-                <Node name="IUsersService.cs" selected="True" />
-              </Node>
-            </Node>
-            <Node name="skolesystem.test">
-              <Node name="Controller" expanded="True" />
-              <Node name="Services" expanded="True" />
+            <Node name="skolesystem" expanded="True">
+              <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
         </State>
       </Pad>
       <Pad Id="MonoDevelop.UnitTesting.TestPad">
         <State name="__root__">
-          <Node name="skolesystem">
-            <Node name="skolesystem" expanded="True" />
-            <Node name="skolesystem.test" expanded="True" />
-          </Node>
+          <Node name="skolesystem" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.skolesystem PreferredExecutionTarget="/Applications/Firefox.app" />
 </Properties>

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using skolesystem.Authorization;
 using skolesystem.Data;
 using skolesystem.DTOs;
 using skolesystem.Models;
@@ -42,6 +43,7 @@ namespace skolesystem.Controllers
             return Ok(schedule);
         }
 
+        [Authorize(2)]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] ScheduleCreateDto scheduleDto)
         {
